@@ -1,63 +1,63 @@
 # Lexical HTML Sandbox
 
-A feature-rich Markdown editor sandbox built with [Lexical](https://lexical.dev/), [React](https://react.dev/), and [Vite](https://vitejs.dev/). Deployed automatically to GitHub Pages.
+[Lexical](https://lexical.dev/)、[React](https://react.dev/)、[Vite](https://vitejs.dev/) で構築された機能豊富な Markdown エディタのサンドボックスです。GitHub Pages に自動デプロイされます。
 
-## Features
+## 機能
 
-- **Rich Text Editing**: Supports headings, lists, quotes, code blocks, and links.
-- **Markdown Support**: Full Markdown shortcut support (e.g., `#` for headings, `*` for lists).
-- **Toolbar**: Intuitive toolbar with icons for Bold, Italic, Underline, Code, and Download.
-- **Local Save**:
-  - **Auto Save**: Content is automatically saved to your browser's local storage.
-  - **Download**: Export your content as a Markdown (`.md`) file.
-- **Debugging Tools**: Integrated **Tree View** to visualize the underlying Lexical node structure.
-- **Responsive Design**: Clean and modern UI styled with CSS.
+- **リッチテキスト編集**: 見出し、リスト、引用、コードブロック、リンクをサポート。
+- **Markdown サポート**: 完全な Markdown ショートカットのサポート（例: 見出しには `#`、リストには `*`）。
+- **ツールバー**: 太字、斜体、下線、コード、ダウンロードのアイコンを備えた直感的なツールバー。
+- **ローカル保存**:
+  - **自動保存**: コンテンツはブラウザのローカルストレージに自動的に保存されます。
+  - **ダウンロード**: コンテンツを Markdown (`.md`) ファイルとしてエクスポートできます。
+- **デバッグツール**: 基礎となる Lexical ノード構造を可視化する統合された **Tree View**。
+- **レスポンシブデザイン**: CSS でスタイル設定されたクリーンでモダンな UI。
 
-## Demo
+## デモ
 
-[Live Demo](https://watanabe3tipapa.github.io/lexical-html/)
+[ライブデモ](https://watanabe3tipapa.github.io/lexical-html/)
 
-## Getting Started
+## 始め方
 
-### Prerequisites
+### 前提条件
 
-- Node.js (v14 or higher)
+- Node.js (v14 以上)
 - npm
 
-### Installation
+### インストール
 
-1. Clone the repository:
+1. リポジトリをクローンします:
    ```bash
    git clone https://github.com/watanabe3tipapa/lexical-html.git
    cd lexical-html
    ```
 
-2. Install dependencies:
+2. 依存関係をインストールします:
    ```bash
    npm install
    ```
 
-3. Start the development server:
+3. 開発サーバーを起動します:
    ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:5173/lexical-html/`.
+4. ブラウザを開き、`http://localhost:5173/lexical-html/` にアクセスします。
 
-## Building for Production
+## 本番用ビルド
 
-To create a production build:
+本番用ビルドを作成するには:
 
 ```bash
 npm run build
 ```
 
-To preview the production build locally:
+本番用ビルドをローカルでプレビューするには:
 
 ```bash
 npm run preview
 ```
 
-## License
+## ライセンス
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+このプロジェクトは MIT ライセンスの下でライセンスされています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
