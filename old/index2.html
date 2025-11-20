@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    
+    <!-- React -->
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    
+    <!-- Lexical -->
+    <script src="https://unpkg.com/lexical/umd/lexical.js"></script>
+    <script src="https://unpkg.com/@lexical/react/umd/LexicalReact.js"></script>
+    <script src="https://unpkg.com/@lexical/markdown/umd/LexicalMarkdown.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto;
+        }
+        
+        .editor-container {
+            margin: 0 auto;
+            max-width: 800px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .editor-input {
+            min-height: 300px;
+            outline: none;
+            padding: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .output-container {
+            margin-top: 20px; /* 上部にマージンを追加 */
+            padding: 10px; /* パディングを追加 */
+            border: 1px solid #ddd; /* 境界線を追加 */
+            background-color: #f9f9f9; /* 背景色を追加 */
+            display: block; /* 表示をブロックに設定 */
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript">
+        const { createEditor } = lexical;
+        const { LexicalComposer } = lexical;
+        const { LexicalEditor } = lexical.react; // LexicalEditorをインポート
+        const { MarkdownShortcutPlugin } = lexical.react;
+        const { RichTextPlugin } = lexical.react; // RichTextPluginをインポート
+        const { HistoryPlugin } = lexical.react; // HistoryPluginをインポート
+        const { AutoFocusPlugin } = lexical.react; // AutoFocusPluginをインポート
+
+        const editorConfig = {
+            namespace: 'MyEditor',
+            theme: {
+                // テーマの設定
+            },
+            onError(error) {
+                console.error("エディタエラー:", error);
+            },
+        };
+
+        function Editor() {
+            const editor = createEditor(editorConfig);
+            const [editorState, setEditorState] = React.useState(editor.getEditorState());
+
+            const onChange = (newEditorState) => {
+                setEditorState(newEditorState);
+                const text = newEditorState.read(); // エディタの内容を取得
+                console.log("入力テキスト:", text); // デバッグ用
+            };
+
+            return (
+                <div className="editor-container">
+                    <LexicalEditor
+                        editor={editor}
+                        onChange={onChange}
+                        placeholder="テキストを入力してください..."
+                        className="editor-input"
+                    />
+                    <RichTextPlugin />
+                    <HistoryPlugin />
+                    <AutoFocusPlugin />
+                    <MarkdownShortcutPlugin />
+                    <div className="output-container">
+                        <h3>入力テキスト:</h3>
+                        <p>{editorState.read()}</p> {/* エディタの内容を表示 */}
+                    </div>
+                </div>
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(
+            <React.StrictMode>
+                <LexicalComposer initialConfig={editorConfig}>
+                    <Editor />
+                </LexicalComposer>
+            </React.StrictMode>
+        );
+    </script>
+</body>
+</html>

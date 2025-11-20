@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lexical Single File Editor</title>
+    <!-- React and ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Lexical Core Packages -->
+    <script src="https://unpkg.com/lexical@0.12.1/dist/lexical.js"></script>
+    <script src="https://unpkg.com/@lexical/react@0.12.1/dist/LexicalReact.js"></script>
+    <script src="https://unpkg.com/@lexical/markdown@0.12.1/dist/LexicalMarkdown.js"></script>
+
+    <!-- Babel for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+    // Lexical Editor Component
+    const { LexicalComposer } = LexicalReact;
+    const { HeadingNode, QuoteNode } = LexicalNodes;
+    const { TRANSFORMERS } = LexicalMarkdown;
+
+    function App() {
+        const initialConfig = {
+            namespace: 'MyEditor',
+            nodes: [
+                HeadingNode,
+                QuoteNode
+            ],
+            theme: {
+                heading: {
+                    h1: 'text-3xl font-bold',
+                    h2: 'text-2xl font-semibold'
+                },
+                quote: 'border-l-4 border-gray-500 pl-4 italic'
+            },
+            onError: (error) => {
+                console.error(error);
+            }
+        };
+
+        return (
+            <LexicalComposer initialConfig={initialConfig}>
+                <div className="editor-container">
+                    <LexicalRichTextPlugin />
+                    <LexicalHistoryPlugin />
+                    <LexicalAutoFocusPlugin />
+                    <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+                </div>
+            </LexicalComposer>
+        );
+    }
+
+    // Render the App
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+    </script>
+</body>
+</html>
