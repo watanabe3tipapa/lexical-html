@@ -1,6 +1,13 @@
-# Lexical HTML Sandbox
+# Lexical HTML - Sandbox
 
-[Lexical](https://lexical.dev/)、[React](https://react.dev/)、[Vite](https://vitejs.dev/) で構築された機能豊富な Markdown エディタのサンドボックスです。GitHub Pages に自動デプロイされます。
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-0.1.0-green.svg)
+
+---
+
+
+[Lexical](https://lexical.dev/)、[React](https://react.dev/)、[Vite](https://vitejs.dev/) で構築された Markdown エディタです。
+GitHub Pages に自動デプロイされます。
 
 ## 機能
 
@@ -61,3 +68,7 @@ npm run preview
 ## ライセンス
 
 このプロジェクトは MIT ライセンスの下でライセンスされています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
+
+---
+
+
