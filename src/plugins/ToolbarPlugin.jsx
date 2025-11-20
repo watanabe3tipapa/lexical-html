@@ -6,6 +6,7 @@ import {
     FORMAT_TEXT_COMMAND,
 } from 'lexical';
 import { useCallback, useEffect, useState } from 'react';
+import { Bold, Italic, Underline, Code } from 'lucide-react';
 
 const LowPriority = 1;
 
@@ -44,7 +45,7 @@ export default function ToolbarPlugin() {
                 }}
                 className={'toolbar-item spaced ' + (isBold ? 'active' : '')}
                 aria-label="Format Bold">
-                <span className="text">Bold</span>
+                <Bold size={18} />
             </button>
             <button
                 onClick={() => {
@@ -52,7 +53,7 @@ export default function ToolbarPlugin() {
                 }}
                 className={'toolbar-item spaced ' + (isItalic ? 'active' : '')}
                 aria-label="Format Italics">
-                <span className="text">Italic</span>
+                <Italic size={18} />
             </button>
             <button
                 onClick={() => {
@@ -60,7 +61,7 @@ export default function ToolbarPlugin() {
                 }}
                 className={'toolbar-item spaced ' + (isUnderline ? 'active' : '')}
                 aria-label="Format Underline">
-                <span className="text">Underline</span>
+                <Underline size={18} />
             </button>
             <button
                 onClick={() => {
@@ -68,7 +69,7 @@ export default function ToolbarPlugin() {
                 }}
                 className={'toolbar-item spaced ' + (isCode ? 'active' : '')}
                 aria-label="Insert Code">
-                <span className="text">Code</span>
+                <Code size={18} />
             </button>
         </div>
     );

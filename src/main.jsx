@@ -17,6 +17,7 @@ import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPl
 import { TRANSFORMERS } from '@lexical/markdown'
 
 import ToolbarPlugin from './plugins/ToolbarPlugin'
+import TreeViewPlugin from './plugins/TreeViewPlugin'
 import './index.css'
 
 function MarkdownEditor() {
@@ -119,6 +120,14 @@ function MarkdownEditor() {
                     <ListPlugin />
                     <LinkPlugin />
                     <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+                    <TreeViewPlugin
+                        treeTypeButtonClassName="debug-tree-type-button"
+                        timeTravelButtonClassName="debug-time-travel-button"
+                        timeTravelPanelSliderClassName="debug-time-travel-panel-slider"
+                        timeTravelPanelButtonClassName="debug-time-travel-panel-button"
+                        viewClassName="tree-view-output"
+                        timeTravelPanelClassName="debug-time-travel-panel"
+                    />
                 </div>
             </div>
         </LexicalComposer>
