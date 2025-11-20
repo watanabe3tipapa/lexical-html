@@ -6,7 +6,8 @@ import {
     FORMAT_TEXT_COMMAND,
 } from 'lexical';
 import { useCallback, useEffect, useState } from 'react';
-import { Bold, Italic, Underline, Code } from 'lucide-react';
+import { Bold, Italic, Underline, Code, Download } from 'lucide-react';
+import { $convertToMarkdownString, TRANSFORMERS } from '@lexical/markdown';
 
 const LowPriority = 1;
 
@@ -36,6 +37,19 @@ export default function ToolbarPlugin() {
             }),
         );
     }, [editor, updateToolbar]);
+
+    const downloadMarkdown = () => {
+        editor.update(() => {
+            const markdown = $convertToMarkdownString(TRANSFORMERS);
+            const blob = new Blob([markdown], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'document.md';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    };
 
     return (
         <div className="toolbar">
@@ -70,6 +84,13 @@ export default function ToolbarPlugin() {
                 className={'toolbar-item spaced ' + (isCode ? 'active' : '')}
                 aria-label="Insert Code">
                 <Code size={18} />
+            </button>
+            <div className="divider" style={{ width: '1px', backgroundColor: '#eee', margin: '0 4px' }} />
+            <button
+                onClick={downloadMarkdown}
+                className="toolbar-item spaced"
+                aria-label="Download Markdown">
+                <Download size={18} />
             </button>
         </div>
     );

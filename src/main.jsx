@@ -18,6 +18,7 @@ import { TRANSFORMERS } from '@lexical/markdown'
 
 import ToolbarPlugin from './plugins/ToolbarPlugin'
 import TreeViewPlugin from './plugins/TreeViewPlugin'
+import AutoSavePlugin from './plugins/AutoSavePlugin'
 import './index.css'
 
 function MarkdownEditor() {
@@ -128,6 +129,7 @@ function MarkdownEditor() {
                         viewClassName="tree-view-output"
                         timeTravelPanelClassName="debug-time-travel-panel"
                     />
+                    <AutoSavePlugin />
                 </div>
             </div>
         </LexicalComposer>
